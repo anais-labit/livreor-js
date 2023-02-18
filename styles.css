@@ -96,7 +96,8 @@ button.ghost {
   background-color: white;
 }
 
-button {
+button,
+#special_input {
   background-color: #adf0d1;
   color: #00203f;
   border: 1px solid #adf0d1;
@@ -110,13 +111,15 @@ button {
   transition: 0.2s ease-in;
 }
 
-button:hover {
+button:hover,
+#special_input:hover {
   cursor: pointer;
   background-color: #00203f;
   color: #adf0d1;
 }
 
-button:active {
+button:active,
+#special_input:active {
   transform: scale(0.95);
 }
 

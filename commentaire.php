@@ -26,7 +26,7 @@ if (isset($_POST['comment'])) {
     <?php require_once './includes/header.php'; ?>
     <!-- <div class="page" id="page"> -->
     <div id="container" class="container">
-        <form action="" method="post" id="commentForm">
+        <form action="commentaire.php" method="post" id="commentForm">
             <h1>Ajouter un commentaire</h1>
             <textarea name="comment" id="comment" placeholder="Écrire ici..." style="height: 100px" required></textarea>
             <button type="submit" id="post">Publier votre commentaire</button>

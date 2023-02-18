@@ -1,6 +1,6 @@
 <?php
-require_once './includes/User_pdo.php';
 session_start();
+require_once './includes/User_pdo.php';
 
 
 // ajout à la DB pour inscription

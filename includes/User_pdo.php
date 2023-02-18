@@ -77,7 +77,7 @@ class User_pdo
     {
         $this->PDO;
         // On vérifie si l'utilisateur existe
-        $check = $this->PDO->prepare('SELECT id, login, password FROM utilisateurs WHERE login = ?');
+        $check = $this->PDO->prepare('SELECT id, login, email, password FROM utilisateurs WHERE login = ?');
         $check->execute(array($login));
         $data = $check->fetch();
         $row = $check->rowCount();
@@ -95,7 +95,8 @@ class User_pdo
     }
     public function deco()
     {
-        unset($_SESSION['login']);
+        session_start();
+        unset($_SESSION);
         session_destroy();
         header('refresh:3; url= index.php');
     }
@@ -155,7 +156,7 @@ class User_pdo
         // si le formulaire est envoyé
         if (isset($_POST['submit'])) {
             $id = $_SESSION['id'];
-            var_dump($_SESSION);
+            // var_dump($_SESSION);
             // les post deviennent les nouvelles valeurs
             $confpwd = ($_POST['confpwd']);
             $newpwd2 = ($_POST['newpwd2']);

@@ -3,6 +3,8 @@ session_start();
 require_once './includes/User_pdo.php';
 
 $login = $_SESSION['login'];
+$email = $_SESSION['email'];
+
 var_dump($_SESSION);
 
 if (isset($_POST['submit'])) {
@@ -24,27 +26,30 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php require_once "./includes/header.php" ?>
-    <div class="page">
+    <!-- <div class="page"> -->
 
-        <?php
-        // salut personnalisé s'il y a un login
-        if (isset($_SESSION['login'])) {
-            echo " <h1> Modifier votre profil " . ucwords($login) . "</h1>";
-        } else {
-            echo "<h1> Salut ! </h1>";
-        }
-        ?>
 
-        <div class="formContainer">
-            <form action="profil.php" method="post">
-                <input type="text" name="login" placeholder="Login : <?= $login ?> ou nouveau ?" required>
-                <input type="password" name="confpwd" placeholder="Ancien mot de passe" required>
-                <input type="password" name="newpwd" placeholder="Nouveau Mot de passe" required>
-                <input type="password" name="newpwd2" placeholder="Confirmation" required>
-                <input type="submit" name="submit" value="Sauvegarder les changements">
-            </form>
-        </div>
+
+    <div id="container" class="container">
+        <form action="profil.php" method="post">
+            <?php
+            // salut personnalisé s'il y a un login
+            if (isset($_SESSION['login'])) {
+                echo " <h1> Modifier votre profil " . ucwords($login) . "</h1>";
+            } else {
+                echo "<h1> Salut ! </h1>";
+            }
+            ?>
+            <input type="text" name="login" placeholder="Login : <?= $login ?> ou nouveau ?" required>
+            <input type="password" name="confpwd" placeholder="Ancien mot de passe" required>
+            <input type="password" name="newpwd" placeholder="Nouveau Mot de passe" required>
+            <input type="password" name="newpwd2" placeholder="Confirmation" required>
+            <input id="special_input" type="submit" name="submit" value="Sauvegarder les changements">
+            <span id="updating"></span>
+        </form>
     </div>
+    <!-- </div> -->
+    <script async src="./JS/update.js"></script>
     <?php require_once "./includes/footer.php" ?>
 </body>
 
